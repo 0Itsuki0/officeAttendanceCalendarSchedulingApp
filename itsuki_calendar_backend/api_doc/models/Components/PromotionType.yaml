@@ -1,0 +1,8 @@
+title: PromotionType
+x-stoplight:
+  id: wz2la9bragqol
+enum:
+  - apple
+  - amazon
+  - google_play
+  - nintendo

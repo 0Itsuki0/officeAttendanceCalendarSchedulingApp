@@ -1,0 +1,13 @@
+type: object
+x-examples:
+  Example 1:
+    type: google_play
+    user_id: itsuki_1
+required:
+  - type
+  - user_id
+properties:
+  type:
+    $ref: ../../Components/PromotionType.yaml
+  user_id:
+    type: string

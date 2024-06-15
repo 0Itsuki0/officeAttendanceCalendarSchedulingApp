@@ -1,0 +1,11 @@
+type: object
+x-stoplight:
+  id: 0e189446c56ec
+x-examples:
+  Example 1:
+    status: went
+properties:
+  status:
+    $ref: ../../Components/EventStatus.yaml
+    x-stoplight:
+      id: 3w143ks0i60j9

@@ -1,0 +1,19 @@
+type: object
+x-stoplight:
+  id: 5f0d02b305e1c
+x-examples:
+  Example 1:
+    error: true
+    message: Record not found
+required:
+  - error
+  - message
+properties:
+  error:
+    type: boolean
+    x-stoplight:
+      id: v3b4k3h62hgb2
+  message:
+    type: string
+    x-stoplight:
+      id: 4mr4ll84tjnpp

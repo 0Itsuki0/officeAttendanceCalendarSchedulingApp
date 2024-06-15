@@ -1,0 +1,56 @@
+type: object
+x-stoplight:
+  id: abff1be04f4ed
+x-examples:
+  Example 1:
+    error: false
+    user:
+      id: itsuki_1
+      password: something
+      points_remained: 0
+      points_used: 0
+      total_attendance: 0
+      username: itsuki_2
+required:
+  - error
+  - user
+properties:
+  error:
+    type: boolean
+    x-stoplight:
+      id: ycq1otuyx4q59
+  user:
+    type: object
+    required:
+      - id
+      - points_remained
+      - points_used
+      - total_attendance
+      - username
+    properties:
+      id:
+        type: string
+        x-stoplight:
+          id: j2ffgz6i5w3ol
+      password:
+        type: string
+        x-stoplight:
+          id: 11eq0zzzziv8m
+      points_remained:
+        type: integer
+        x-stoplight:
+          id: 13rwzzztll8tf
+      points_used:
+        type: integer
+        x-stoplight:
+          id: w9xpfgkxwogd2
+      total_attendance:
+        type: integer
+        x-stoplight:
+          id: qy1348kxn799z
+      username:
+        type: string
+        x-stoplight:
+          id: ep62l6u1m3jvn
+    x-stoplight:
+      id: j1aiwnbqq04wq

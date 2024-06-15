@@ -1,0 +1,16 @@
+# rust
+debug/
+target/
+Cargo.lock
+**/*.rs.bk
+
+# cdk
+.cdk.staging
+cdk.out
+package-lock.json
+cdk.out
+node_modules
+
+# others
+.env
+.DS_Store

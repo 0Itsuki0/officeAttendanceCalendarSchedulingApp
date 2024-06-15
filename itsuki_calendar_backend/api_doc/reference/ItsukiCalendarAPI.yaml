@@ -1,0 +1,398 @@
+openapi: 3.1.0
+x-stoplight:
+  id: l2n9qg4nbr848
+info:
+  title: ItsukiCalendarAPI
+  version: '1.0'
+servers:
+  - url: 'http://{base_url}'
+    variables:
+      base_url:
+        default: 'localhost:9000'
+        description: Base Local Endpoint Url
+    description: endpoint url
+paths:
+  '/users/{user_id}':
+    parameters:
+      - schema:
+          type: string
+        name: user_id
+        in: path
+        required: true
+        description: User Id
+    get:
+      summary: Get User Info by User ID
+      tags:
+        - user
+      responses:
+        '200':
+          description: User Info
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Response/UserResponse/GetUserInfoResponse.yaml
+              examples:
+                Get User:
+                  value:
+                    error: false
+                    user:
+                      id: itsuki_1
+                      password: something
+                      points_remained: 0
+                      points_used: 0
+                      total_attendance: 0
+                      username: itsuki_2
+          headers:
+            content-type:
+              schema:
+                type: string
+              description: application/json
+        4XX:
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Response/ErrorResponse.yaml
+          headers: {}
+      operationId: get-users-userId
+      description: Retrieve user information by user ID.
+      x-stoplight:
+        id: r2083a3zrbjxn
+    put:
+      summary: Update User Information
+      operationId: put-users-userId
+      responses:
+        '200':
+          description: Updated user info
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Response/UserResponse/GetUserInfoResponse.yaml
+              examples: {}
+        4XX:
+          description: Client Error
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Response/ErrorResponse.yaml
+            text/plain:
+              schema:
+                type: object
+                properties: {}
+      description: |-
+        Update information of an existing user.
+        - Username
+        - password
+      requestBody:
+        content:
+          application/json:
+            schema:
+              oneOf:
+                - $ref: ../models/Request/UserRequest/PutUserRequestPassword.yaml
+                - $ref: ../models/Request/UserRequest/PutUserRequestUserName.yaml
+                  x-stoplight:
+                    id: qitylln77uira
+        description: user properties to update.
+      x-stoplight:
+        id: 8322zv92wnwpj
+      tags:
+        - user
+  '/users/{user_id}/verify':
+    parameters:
+      - schema:
+          type: string
+        name: user_id
+        in: path
+        required: true
+    post:
+      summary: Verify User Information
+      operationId: post-users-userId-verify
+      responses:
+        '200':
+          description: User Updated
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Response/UserResponse/GetUserInfoResponse.yaml
+        4XX:
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Response/ErrorResponse.yaml
+            text/plain:
+              schema:
+                type: object
+                properties: {}
+      description: |-
+        verify the information of an existing user by using 
+        - userId
+        - password
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ../models/Request/UserRequest/PutUserRequestPassword.yaml
+        description: ''
+      x-stoplight:
+        id: h6gfcfc8ydd7r
+      tags:
+        - user
+  /users:
+    post:
+      summary: Create New User
+      operationId: post-user
+      responses:
+        '200':
+          description: User info for the newly created user.
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Response/UserResponse/GetUserInfoResponse.yaml
+        4XX:
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Response/ErrorResponse.yaml
+            text/html:
+              schema:
+                type: object
+                properties: {}
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ../models/Request/UserRequest/PostNewUserRequest.yaml
+        description: Post needed info to create a new user.
+      description: Create a new user.
+      x-stoplight:
+        id: 0f4v0cv4afzro
+      tags:
+        - user
+    parameters: []
+  /events:
+    get:
+      summary: Get Events
+      tags:
+        - event
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Response/EventResponse/GetEventResponse.yaml
+        4XX:
+          description: Bad request
+      operationId: get-events
+      x-stoplight:
+        id: f44xck5tjfgzu
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: user_id
+          description: 'user id to filter events on '
+        - schema:
+            type: string
+          in: query
+          name: start_time
+          description: 'start time to filter events on. Format: YYYY-MM-ddThh:mm:ss'
+        - schema:
+            type: string
+          in: query
+          name: end_time
+          description: 'end time to filter event on. Format: YYYY-MM-ddThh:mm:ss'
+    post:
+      summary: Create New Event
+      tags:
+        - event
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Response/EventResponse/PostNewEventResponse.yaml
+        4XX:
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Response/ErrorResponse.yaml
+            text/plain:
+              schema:
+                type: object
+                properties: {}
+      operationId: post-events
+      x-stoplight:
+        id: hcd2k91z7m2oz
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ../models/Request/EventRequest/PostNewEventRequest.yaml
+  '/events/{event_id}':
+    parameters:
+      - schema:
+          type: string
+        name: event_id
+        in: path
+        required: true
+    delete:
+      summary: Delete Single Event
+      tags:
+        - event
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                x-examples:
+                  Example 1:
+                    error: false
+                required:
+                  - error
+                properties:
+                  error:
+                    type: boolean
+        4XX:
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Response/ErrorResponse.yaml
+      operationId: delete-events-event_id
+      x-stoplight:
+        id: gvem79my89wiw
+    put:
+      summary: Update Event Status
+      tags:
+        - event
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Response/EventResponse/PostNewEventResponse.yaml
+        4XX:
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Response/ErrorResponse.yaml
+            text/html:
+              schema:
+                type: object
+                properties: {}
+      operationId: put-events-event_id
+      x-stoplight:
+        id: gn8m8afepc9w6
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ../models/Request/EventRequest/UpdateEventStatusRequest.yaml
+  /promotions:
+    post:
+      summary: Add New promotions
+      tags:
+        - promotion
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Response/PromotionResponse/PostPromotionResponse.yaml
+        4XX:
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Response/ErrorResponse.yaml
+            text/html:
+              schema:
+                type: object
+                properties: {}
+      operationId: post-promotions
+      x-stoplight:
+        id: 750cj8n4aurba
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ../models/Request/PromotionRequests/PostPromotionsRequest.yaml
+        description: promotions to add.
+  /promotions/unused_count:
+    get:
+      summary: Get Unused Promotions Count
+      tags:
+        - promotion
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Response/PromotionResponse/GetUnusedPromotionCountResponse.yaml
+      operationId: get-promotions-unused_count
+      x-stoplight:
+        id: 0xy08y1wligkv
+  /promotions/exchange:
+    post:
+      summary: Exchange Promotion
+      tags:
+        - promotion
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Response/PromotionResponse/PostExchangePromotionResponse.yaml
+        4XX:
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: ../models/Response/ErrorResponse.yaml
+            text/html:
+              schema:
+                type: object
+                properties: {}
+      operationId: post-promotions-exchange
+      x-stoplight:
+        id: 4ytv0s6oxh85m
+      description: Exchange an unsed promotion for a user
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ../models/Request/PromotionRequests/PostExchangePromotionRequest.yaml
+components:
+  schemas: {}
+  parameters:
+    user_id:
+      name: user_id
+      in: path
+      required: true
+      schema:
+        type: string
+      description: user Id
+    event_id:
+      name: event_id
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Event Id
+  responses: {}
+tags:
+  - name: event
+  - name: promotion
+  - name: user

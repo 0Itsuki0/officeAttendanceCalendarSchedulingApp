@@ -1,0 +1,23 @@
+type: object
+x-examples:
+  Example 1:
+    id: event_1
+    location: tokyo
+    timestamp: '2024-12-14T15:00:00'
+    user_id: itsuki_1
+required:
+  - id
+  - location
+  - timestamp
+  - user_id
+properties:
+  id:
+    type: string
+    description: event id
+  location:
+    type: string
+  timestamp:
+    type: string
+    description: 'time stamp in the format of YYYY-MM-ddThh:mm:ss'
+  user_id:
+    type: string

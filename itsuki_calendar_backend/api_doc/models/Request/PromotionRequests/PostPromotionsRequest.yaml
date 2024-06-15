@@ -1,0 +1,35 @@
+type: object
+x-examples:
+  Example 1:
+    promotions:
+      - type: apple
+        code: 123d3
+        promotion_value: 1000
+        points_required: 10
+      - type: apple
+        code: 12344dfdf
+      - type: google_play
+        code: 12dasd3d4
+      - type: amazon
+        code: 12dff3df6
+required:
+  - promotions
+properties:
+  promotions:
+    type: array
+    items:
+      type: object
+      required:
+        - type
+        - code
+      properties:
+        type:
+          $ref: ../../Components/PromotionType.yaml
+        code:
+          type: string
+        promotion_value:
+          type: integer
+          description: default to 500 if not specified
+        points_required:
+          type: integer
+          description: default to 50 if not specified

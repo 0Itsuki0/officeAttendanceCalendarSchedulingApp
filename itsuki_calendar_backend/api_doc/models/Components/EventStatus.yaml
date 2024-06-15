@@ -1,0 +1,7 @@
+title: EventStatus
+x-stoplight:
+  id: gie280ks1aj0s
+enum:
+  - absence
+  - went
+  - going

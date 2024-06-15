@@ -1,0 +1,31 @@
+type: object
+x-examples:
+  Example 1:
+    error: false
+    promotion_count:
+      amazon: 4
+      apple: 6
+      google_play: 3
+      nintendo: 3
+required:
+  - error
+  - promotion_count
+properties:
+  error:
+    type: boolean
+  promotion_count:
+    type: object
+    required:
+      - amazon
+      - apple
+      - google_play
+      - nintendo
+    properties:
+      amazon:
+        type: integer
+      apple:
+        type: integer
+      google_play:
+        type: integer
+      nintendo:
+        type: integer

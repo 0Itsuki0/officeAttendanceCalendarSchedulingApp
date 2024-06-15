@@ -1,0 +1,26 @@
+{
+  "images" : [
+    {
+      "filename" : "png-clipart-computer-icons-google-play-android-angle-triangle-thumbnail-removebg-preview.png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "png-clipart-computer-icons-google-play-android-angle-triangle-thumbnail-removebg-preview 1.png",
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "png-clipart-computer-icons-google-play-android-angle-triangle-thumbnail-removebg-preview 2.png",
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  },
+  "properties" : {
+    "template-rendering-intent" : "template"
+  }
+}

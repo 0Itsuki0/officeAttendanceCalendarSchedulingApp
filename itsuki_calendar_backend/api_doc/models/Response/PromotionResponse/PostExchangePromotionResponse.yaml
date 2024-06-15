@@ -1,0 +1,45 @@
+type: object
+x-examples:
+  Example 1:
+    error: false
+    promotion:
+      exchanged_by: itsuki_1
+      exchanged_date: '2024-06-11T03:49:39.460661'
+      id: GooglePlay12dd3d4
+      points_required: 50
+      promotion_code: 12dd3d4
+      promotion_type: google_play
+      promotion_value: 500
+required:
+  - error
+  - promotion
+properties:
+  error:
+    type: boolean
+  promotion:
+    type: object
+    required:
+      - exchanged_by
+      - exchanged_date
+      - id
+      - points_required
+      - promotion_code
+      - promotion_type
+      - promotion_value
+    properties:
+      exchanged_by:
+        type: string
+        description: user id for the user that exchanged the promotion
+      exchanged_date:
+        type: string
+      id:
+        type: string
+        description: promotion id
+      points_required:
+        type: integer
+      promotion_code:
+        type: string
+      promotion_type:
+        type: string
+      promotion_value:
+        type: integer

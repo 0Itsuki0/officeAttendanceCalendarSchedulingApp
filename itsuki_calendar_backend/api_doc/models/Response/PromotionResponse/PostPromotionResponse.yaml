@@ -1,0 +1,15 @@
+type: object
+x-examples:
+  Example 1:
+    error: false
+    promotions_added: 4
+required:
+  - error
+  - promotions_added
+properties:
+  error:
+    type: boolean
+  promotions_added:
+    type: integer
+    description: number of promotions added
+    minimum: ''

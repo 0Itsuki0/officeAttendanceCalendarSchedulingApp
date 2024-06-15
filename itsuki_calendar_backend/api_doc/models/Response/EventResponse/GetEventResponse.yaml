@@ -1,0 +1,21 @@
+type: object
+x-examples:
+  Example 1:
+    error: false
+    events:
+      - id: event_1
+        location: tokyo
+        status: going
+        timestamp: '2024-12-14T15:00:00'
+        user_id: itsuki_1
+        user_name: '1'
+required:
+  - error
+  - events
+properties:
+  error:
+    type: boolean
+  events:
+    type: array
+    items:
+      $ref: ../../Components/EventRecord.yaml
