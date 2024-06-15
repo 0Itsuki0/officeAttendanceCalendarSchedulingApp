@@ -18,8 +18,8 @@ class Constants {
     }
     
     enum Connection {
-        static let scheme = "http"
-        static let host = "10.24.231.207"
-        static let port: Int? = 9000
+        static let scheme = "https"
+        static let host = "www.example.com"
+        static let port: Int? = nil
     }
 }
